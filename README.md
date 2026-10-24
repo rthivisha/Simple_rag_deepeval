@@ -100,6 +100,6 @@ To add or change test cases, edit `eval_dataset.json`. It must remain a JSON arr
 - LLM-as-a-judge scores can vary between runs. Review metric reasons and examples rather than treating a threshold as proof of correctness.
 - Provider rate limits, model availability, and API pricing can change. If a call fails, check the latest error and the relevant provider's account limits.
 
-## A note from the author
+## A note from me :
 
 I wrote the pipeline and evaluation code myself as a way to build coding muscle memory, and I’m proud of the progress that came from working through the implementation. This project is a hands-on learning milestone and a foundation for the next, more capable RAG evaluation project.
