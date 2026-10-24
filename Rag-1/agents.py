@@ -26,6 +26,6 @@ def ask(query:str) ->dict:
         "context":structured_response.context,
     }
 
-print(ask("what are the rag evaluation metrics used?"))
-
+if __name__ == "__main__":
+    print(ask("what are the rag evaluation metrics used?"))
 

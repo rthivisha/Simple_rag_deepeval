@@ -32,8 +32,6 @@ for sample in data:
     print(f"Answer from Rag: {actual_response['ans']}")
 
 with results_path.open("w", encoding="utf-8") as results_file:
-    for result in results:
-        results_file.write(json.dumps(result) + "\n")
+    json.dump(results, results_file, ensure_ascii=False, indent=2)
 
 print(f"Evaluation completed. Results saved to {results_path.name}")
-

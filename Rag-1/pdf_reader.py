@@ -22,4 +22,5 @@ def extract_pdf(path_of_pdf:str) -> List:
 
     return paragraphs
 
-print(len(extract_pdf("pdfs/llm_agent_eval_metrics_text.pdf")))
+if __name__ == "__main__":
+    print(len(extract_pdf("pdfs/llm_agent_eval_metrics_text.pdf")))
