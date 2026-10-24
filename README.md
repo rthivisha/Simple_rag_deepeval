@@ -2,17 +2,6 @@
 
 A small retrieval-augmented generation (RAG) project that reads a PDF, retrieves relevant passages, answers questions from that context, and evaluates the answers with DeepEval.
 
-![DeepEval example results](assets/evaluation-results.png)
-
-The screenshot highlights one test case and the aggregate results from the current tiny evaluation run. The dataset currently contains **two questions**, so these scores are an example of how the evaluation works—not a statistically reliable benchmark.
-
-## What this project does
-
-1. Extracts text blocks from a PDF and adds them to an in-memory vector store.
-2. Uses Google embeddings and similarity search to retrieve up to three relevant passages.
-3. Uses a Gemini-powered LangChain agent to answer each question from retrieved PDF context.
-4. Evaluates the generated answers with four DeepEval metrics.
-
 ## Evaluation metrics
 
 Each metric uses a `0.7` pass threshold in `deepeval_onrag.py`.
@@ -24,6 +13,10 @@ Each metric uses a `0.7` pass threshold in `deepeval_onrag.py`.
 | Faithfulness | Whether claims in the answer are supported by the retrieved context. |
 | Contextual Relevancy | Whether the retrieved context is relevant to the question. |
 
+![DeepEval example results](assets/evaluation-results.png)
+
+The screenshot highlights one test case and the aggregate results from the current tiny evaluation run. The dataset currently contains **two questions**, so these scores are an example of how the evaluation works and not a final benchmark.
+
 ## Models and rate limits
 
 - **RAG answer generation:** `gemini-3.6-flash` through LangChain.
@@ -31,7 +24,7 @@ Each metric uses a `0.7` pass threshold in `deepeval_onrag.py`.
 - **DeepEval judge:** `openai/gpt-oss-20b` through Groq's OpenAI-compatible API.
 - **Evaluation execution:** sequential (`run_async=False`). This avoids parallel request bursts that can run into provider rate limits on free or limited-allowance API tiers.
 
-Model availability and quotas depend on the provider and account. A sequential run can still be affected by temporary service errors or exhausted quotas. For a larger follow-up project, I plan to try a paid OpenAI model and compare its evaluation quality and capacity.
+Model availability and quotas depend on the provider and account. A sequential run can still be affected by temporary service errors or exhausted quotas. For a larger follow-up project, I plan to expand the dataset and the evaluation scope.
 
 ## Project files
 
@@ -80,7 +73,7 @@ uv run python eval_run1.py
 uv run python deepeval_onrag.py
 ```
 
-The first command reads `eval_dataset.json`, asks the RAG agent each question, and writes `eval_result1.json` as a JSON array. The second command evaluates those cases and writes one JSON object per line to `evaluated_results.json`.
+The first command reads `eval_dataset.json`, asks the RAG agent each question, and writes `eval_result1.json` as a JSON array. The second command evaluates those cases and writes one JSON object per dataset item to `evaluated_results.json`.
 
 To add or change test cases, edit `eval_dataset.json`. It must remain a JSON array, and each item must include `question` and `expected_answer`, for example:
 
@@ -102,4 +95,4 @@ To add or change test cases, edit `eval_dataset.json`. It must remain a JSON arr
 
 ## A note from me :
 
-I wrote the pipeline and evaluation code myself as a way to build coding muscle memory, and I’m proud of the progress that came from working through the implementation. This project is a hands-on learning milestone and a foundation for the next, more capable RAG evaluation project.
+I wrote the pipeline and evaluation code myself as a way to build coding muscle memory, and I’m proud of the progress that came from working through the implementation. This project is a hands-on learning exercise rather than a production-ready system.
