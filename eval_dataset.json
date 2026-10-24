@@ -1,0 +1,4 @@
+[
+	{"question": "What is Exact Match in LLM evaluation?", "expected_answer": "Exact Match checks whether the model output equals the gold answer. It suits closed tasks like classification or short-answer QA but is brittle for free text."},
+    {"question": "What does Recall@k measure in retrieval?", "expected_answer": "Recall@k is the fraction of relevant documents found in the top k retrieved results."}
+]

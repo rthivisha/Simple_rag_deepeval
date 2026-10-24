@@ -1,0 +1,17 @@
+[project]
+name = "rag-eval-project-2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "deepeval>=4.3.1",
+    "dotenv>=0.9.9",
+    "langchain>=1.4.6",
+    "langchain-google-genai>=4.4.2",
+    "pydantic>=2.14.1",
+    "pymupdf>=2.0",
+]
+
+[tool.pyright]
+extraPaths = ["Rag-1"]
